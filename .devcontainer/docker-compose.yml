@@ -9,14 +9,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - claude-data:/home/vscode/.claude
     command: ["sleep", "infinity"]
-    depends_on:
-      - init-volume
-
-  init-volume:
-    image: busybox
-    volumes:
-      - claude-data:/data
-    command: ["sh", "-c", "chown -R 1000:1000 /data"]
 
 volumes:
   claude-data:

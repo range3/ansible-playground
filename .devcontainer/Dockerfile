@@ -63,7 +63,8 @@ USER vscode
 RUN mkdir -p ~/.npm-global \
     && npm config set prefix '~/.npm-global' \
     && echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc \
-    && npm install -g @anthropic-ai/claude-code
+    && npm install -g @anthropic-ai/claude-code \
+    && mkdir -p ~/.claude
 
 USER root
 
