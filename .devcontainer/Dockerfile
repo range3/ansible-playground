@@ -52,5 +52,18 @@ ENV MISE_CACHE_DIR="/mise/cache"
 ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
 ENV PATH="/mise/shims:$PATH"
 RUN curl https://mise.run | sh
+RUN mise settings add idiomatic_version_file_enable_tools "[]"
+
+# Install node by mise
+RUN mise use -g node@lts
+
+# Install Claude Code
+USER vscode
+RUN mkdir -p ~/.npm-global \
+    && npm config set prefix '~/.npm-global' \
+    && echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc \
+    && npm install -g @anthropic-ai/claude-code
+
+USER root
 
 ENTRYPOINT ["/usr/local/bin/docker-init.sh"]
