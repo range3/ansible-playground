@@ -1,0 +1,10 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ../..:/workspaces
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["sleep", "infinity"]
