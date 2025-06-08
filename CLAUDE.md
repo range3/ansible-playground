@@ -79,3 +79,19 @@ pip install ansible-dev-tools
 - **test**: server3
 
 When modifying inventory or playbooks, ensure host group consistency and verify connectivity before running playbooks against production hosts.
+
+## Git Commit Guidelines
+
+### Commit Message Format
+- Use simple, one-line commit messages in English
+- Do not include Claude Code co-author attribution
+- Example: `Add Claude Code installation to devcontainer`
+
+### Commit Process
+```bash
+# Stage changes
+git add <files>
+
+# Create simple commit
+git commit -m "Brief description of changes"
+```
