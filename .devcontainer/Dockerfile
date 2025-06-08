@@ -44,4 +44,13 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       direnv \
     && echo 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc
 
+# mise
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV MISE_DATA_DIR="/mise"
+ENV MISE_CONFIG_DIR="/mise"
+ENV MISE_CACHE_DIR="/mise/cache"
+ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
+ENV PATH="/mise/shims:$PATH"
+RUN curl https://mise.run | sh
+
 ENTRYPOINT ["/usr/local/bin/docker-init.sh"]
