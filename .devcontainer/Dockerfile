@@ -37,4 +37,11 @@ RUN if ! grep -qE '^docker:' /etc/group; then \
 COPY docker-init.sh /usr/local/bin/docker-init.sh
 RUN chmod +x /usr/local/bin/docker-init.sh
 
+# direnv
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt update \
+    && apt install -y --no-install-recommends \
+      direnv \
+    && echo 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc
+
 ENTRYPOINT ["/usr/local/bin/docker-init.sh"]
