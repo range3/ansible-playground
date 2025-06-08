@@ -5,6 +5,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt update \
     && apt install -y --no-install-recommends \
+      vim \
       python3 \
       python3-venv \
       python3-pip
